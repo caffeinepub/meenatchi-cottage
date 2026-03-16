@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background: soft cream white */
+    --background: 0.98 0.005 0;
+    /* Foreground: deep warm charcoal */
+    --foreground: 0.18 0.02 30;
+
+    --card: 0.99 0.003 0;
+    --card-foreground: 0.18 0.02 30;
+
+    --popover: 0.99 0.003 0;
+    --popover-foreground: 0.18 0.02 30;
+
+    /* Primary: deep maroon */
+    --primary: 0.35 0.12 10;
+    --primary-foreground: 0.98 0.003 0;
+
+    /* Secondary: blush pink */
+    --secondary: 0.92 0.04 350;
+    --secondary-foreground: 0.35 0.12 10;
+
+    --muted: 0.95 0.015 350;
+    --muted-foreground: 0.55 0.03 30;
+
+    /* Accent: gold */
+    --accent: 0.78 0.1 80;
+    --accent-foreground: 0.18 0.02 30;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0.003 0;
+
+    --border: 0.9 0.02 350;
+    --input: 0.9 0.02 350;
+    --ring: 0.78 0.1 80;
+
+    /* Custom palette */
+    --gold: 0.78 0.1 80;
+    --maroon: 0.35 0.12 10;
+    --blush: 0.92 0.04 350;
+    --cream: 0.97 0.01 50;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+/* Custom utility classes */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-8 py-3 rounded-full font-body font-semibold text-sm tracking-wide hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-md;
+  }
+
+  .btn-gold {
+    @apply border-2 border-accent text-accent px-8 py-3 rounded-full font-body font-semibold text-sm tracking-wide hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-105;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight;
+  }
+
+  .peacock-divider {
+    @apply flex items-center gap-3 justify-center my-4;
+  }
+
+  .gold-text {
+    color: oklch(var(--gold));
+  }
+
+  .maroon-text {
+    color: oklch(var(--maroon));
+  }
+
+  .service-card {
+    @apply bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1;
+  }
+}
+
+/* Scroll animation observer */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Ornamental peacock SVG background pattern */
+.peacock-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M30 30 C30 20 20 10 10 10 C20 10 20 20 30 30 C20 20 10 20 10 30 C10 20 20 20 30 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Carousel transitions */
+.carousel-slide {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Masonry grid */
+.masonry-grid {
+  columns: 2;
+  column-gap: 1rem;
+}
+@media (min-width: 768px) {
+  .masonry-grid {
+    columns: 3;
+  }
+}
+@media (min-width: 1024px) {
+  .masonry-grid {
+    columns: 4;
+  }
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
